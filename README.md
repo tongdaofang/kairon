@@ -23,6 +23,8 @@
     <img src="https://img.shields.io/badge/version-0.1.0--alpha-6c5ce7" alt="version"/>
     <img src="https://img.shields.io/badge/license-MIT-blue" alt="license"/>
     <img src="https://img.shields.io/badge/built%20with-Tauri%20%2B%20React-purple" alt="tech"/>
+    <img src="https://img.shields.io/badge/docker-ready-2496ed?logo=docker" alt="docker"/>
+    <img src="https://img.shields.io/github/stars/tongdaofang/kairon?style=flat&color=yellow" alt="stars"/>
   </p>
 
   <br/>
@@ -98,20 +100,40 @@ Visual drag-and-drop workflow editor. Chain agents together.
 ### Try the Web App
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/kairon.git
+git clone https://github.com/tongdaofang/kairon.git
 cd kairon
 npm install
 npm run dev
 ```
 
-### One-Click Install (Coming Soon)
+### One-Click Install with Docker 🐳
 
 ```bash
-# Linux / macOS
-curl -fsSL https://get.kairon.dev | sh
+docker run -d --name kairon -p 3000:3000 --restart unless-stopped \
+  -e OPENAI_API_KEY=sk-... \
+  $(curl -s https://ghcr.io/tongdaofang/kairon:latest 2>/dev/null && echo 'ghcr.io/tongdaofang/kairon:latest' || echo 'kairon')
+```
 
-# Docker
-docker run -d -p 3000:3000 kairon/server
+Or build it yourself:
+
+```bash
+git clone https://github.com/tongdaofang/kairon.git
+cd kairon
+docker build -t kairon .
+docker run -d -p 3000:3000 kairon
+```
+
+Then open http://localhost:3000 🚀
+
+### Manual Install
+
+```bash
+git clone https://github.com/tongdaofang/kairon.git
+cd kairon
+npm install
+npm run build
+node server/index.js
+# Open http://localhost:3000
 ```
 
 ---
