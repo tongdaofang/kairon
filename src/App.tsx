@@ -3,6 +3,7 @@ import './styles/App.css'
 import Sidebar from './components/Sidebar'
 import ChatView from './components/ChatView'
 import WelcomeScreen from './components/WelcomeScreen'
+import WorkflowEditor from './components/WorkflowEditor'
 import SettingsModal from './components/SettingsModal'
 import type { AgentSettings } from './components/SettingsModal'
 
@@ -14,16 +15,20 @@ const DEFAULT_SETTINGS: AgentSettings = {
   temperature: 0.7,
 }
 
+type ViewMode = 'chat' | 'workflow'
+
 function App() {
   const [activeSession, setActiveSession] = useState<string | null>(null)
   const [sessions, setSessions] = useState<string[]>([])
   const [settings, setSettings] = useState<AgentSettings>(DEFAULT_SETTINGS)
   const [showSettings, setShowSettings] = useState(false)
+  const [viewMode, setViewMode] = useState<ViewMode>('chat')
 
   const handleNewSession = () => {
     const id = `session-${Date.now()}`
     setSessions(prev => [...prev, id])
     setActiveSession(id)
+    setViewMode('chat')
   }
 
   return (
@@ -32,11 +37,15 @@ function App() {
         sessions={sessions}
         activeSession={activeSession}
         onNewSession={handleNewSession}
-        onSelectSession={setActiveSession}
+        onSelectSession={(id) => { setActiveSession(id); setViewMode('chat') }}
         onOpenSettings={() => setShowSettings(true)}
+        onSwitchToWorkflow={() => setViewMode('workflow')}
+        currentMode={viewMode}
       />
       <main className="main-content">
-        {activeSession ? (
+        {viewMode === 'workflow' ? (
+          <WorkflowEditor settings={settings} />
+        ) : activeSession ? (
           <ChatView sessionId={activeSession} settings={settings} />
         ) : (
           <WelcomeScreen onNewSession={handleNewSession} />

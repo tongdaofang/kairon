@@ -33,6 +33,44 @@
   background-clip: text;
 }
 
+.mode-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 12px;
+}
+
+.mode-tab {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.mode-tab:hover {
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+}
+
+.mode-tab.active {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.mode-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .new-chat-btn {
   margin: 12px 12px 8px;
   padding: 10px 16px;
