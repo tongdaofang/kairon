@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="100%" stop-color="#a29bfe"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" rx="16" fill="#0f0f13"/>
+  <rect x="4" y="4" width="392" height="4" rx="2" fill="url(#g)"/>
+  <text x="200" y="100" text-anchor="middle" fill="url(#g)" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="64">K</text>
+  <text x="200" y="140" text-anchor="middle" fill="#e8e8ed" font-family="Helvetica,Arial,sans-serif" font-weight="bold" font-size="22" letter-spacing="3">KAIRON</text>
+  <text x="200" y="162" text-anchor="middle" fill="#6c5ce7" font-family="Helvetica,Arial,sans-serif" font-size="9" letter-spacing="2" opacity="0.7">YOUR AI COMPUTER</text>
+</svg>
