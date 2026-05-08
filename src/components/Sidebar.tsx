@@ -5,9 +5,10 @@ interface SidebarProps {
   activeSession: string | null
   onNewSession: () => void
   onSelectSession: (id: string) => void
+  onOpenSettings: () => void
 }
 
-export default function Sidebar({ sessions, activeSession, onNewSession, onSelectSession }: SidebarProps) {
+export default function Sidebar({ sessions, activeSession, onNewSession, onSelectSession, onOpenSettings }: SidebarProps) {
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -43,8 +44,10 @@ export default function Sidebar({ sessions, activeSession, onNewSession, onSelec
       </div>
 
       <div className="sidebar-footer">
-        <span className="version">v0.1.0</span>
-        <span className="tag">alpha</span>
+        <button className="settings-btn" onClick={onOpenSettings}>
+          ⚙️ Settings
+        </button>
+        <span className="version">v0.1.0-alpha</span>
       </div>
     </aside>
   )
